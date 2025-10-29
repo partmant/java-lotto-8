@@ -16,5 +16,15 @@ public class Lotto {
         }
     }
 
-    // TODO: 추가 기능 구현
+    public boolean isValid() {
+        return hasSixUniqueNumbers() && AllNumbersInValidRange();
+    }
+
+    private boolean hasSixUniqueNumbers() {
+        return numbers.stream().distinct().count() == 6;
+    }
+
+    private boolean AllNumbersInValidRange() {
+        return numbers.stream().allMatch(num -> num >= 1 && num <= 45);
+    }
 }

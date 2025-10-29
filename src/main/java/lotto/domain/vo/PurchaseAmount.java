@@ -17,7 +17,7 @@ public final class PurchaseAmount {
         return new PurchaseAmount(validatedAmount);
     }
 
-    public int calculatePurchasableCount() {
+    public int calculateLottoCount() {
         return amount / LOTTO_PRICE;
     }
 }

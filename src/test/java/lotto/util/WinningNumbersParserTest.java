@@ -3,13 +3,13 @@ package lotto.util;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.List;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import java.util.List;
 
 public class WinningNumbersParserTest {
 
@@ -47,6 +47,7 @@ public class WinningNumbersParserTest {
     @Test
     void 유효한_입력은_정수_리스트로_반환한다() {
         List<Integer> result = WinningNumbersParser.parse("1,2,3,4,5,6");
+
         assertThat(result).containsExactly(1, 2, 3, 4, 5, 6);
     }
 
@@ -54,6 +55,7 @@ public class WinningNumbersParserTest {
     @Test
     void 입력에_공백이_포함되어_있어도_정상_처리된다() {
         List<Integer> result = WinningNumbersParser.parse(" 1, 2,3 ,4, 5 , 6 ");
+
         assertThat(result).containsExactly(1, 2, 3, 4, 5, 6);
     }
 }

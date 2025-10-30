@@ -14,6 +14,7 @@ public class PurchaseAmountTest {
     @Test
     void 검증된_금액으로_PurchaseAmount_객체_생성이_성공한다() {
         PurchaseAmount amount = PurchaseAmount.from(VALID_AMOUNT_INPUT);
+
         assertThat(amount).isNotNull();
     }
 
@@ -21,6 +22,7 @@ public class PurchaseAmountTest {
     @Test
     void 구입_금액으로_구입_가능한_로또_개수를_계산한다() {
         PurchaseAmount amount = PurchaseAmount.from(VALID_AMOUNT_INPUT);
+
         assertThat(amount.calculateLottoCount()).isEqualTo(EXPECTED_LOTTO_COUNT);
     }
 }

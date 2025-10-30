@@ -2,6 +2,8 @@ package lotto.util;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.stream.Stream;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -9,8 +11,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import java.util.stream.Stream;
 
 @DisplayName("PurchaseAmountValidator 테스트")
 class PurchaseAmountValidatorTest {

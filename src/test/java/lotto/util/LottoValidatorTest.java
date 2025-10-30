@@ -8,7 +8,7 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class WinningNumbersValidatorTest {
+class LottoValidatorTest {
 
     private static final String INVALID_COUNT_ERROR_MESSAGE = "[ERROR] 당첨 번호는 6개의 숫자여야 합니다.";
     private static final String OUT_OF_RANGE_ERROR_MESSAGE = "[ERROR] 당첨 번호는 1부터 45 사이의 숫자여야 합니다.";
@@ -19,7 +19,7 @@ class WinningNumbersValidatorTest {
     void 숫자가_6개가_아니면_예외를_발생시킨다() {
         List<Integer> numbers = List.of(1, 2, 3, 4, 5);
 
-        assertThatThrownBy(() -> WinningNumbersValidator.validate(numbers))
+        assertThatThrownBy(() -> LottoValidator.validate(numbers))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(INVALID_COUNT_ERROR_MESSAGE);
     }
@@ -29,7 +29,7 @@ class WinningNumbersValidatorTest {
     void 범위를_벗어난_숫자가_있으면_예외를_발생시킨다() {
         List<Integer> numbers = List.of(0, 2, 3, 4, 5, 6);
 
-        assertThatThrownBy(() -> WinningNumbersValidator.validate(numbers))
+        assertThatThrownBy(() -> LottoValidator.validate(numbers))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(OUT_OF_RANGE_ERROR_MESSAGE);
     }
@@ -39,7 +39,7 @@ class WinningNumbersValidatorTest {
     void 중복된_숫자가_있으면_예외를_발생시킨다() {
         List<Integer> numbers = List.of(1, 2, 3, 4, 5, 5);
 
-        assertThatThrownBy(() -> WinningNumbersValidator.validate(numbers))
+        assertThatThrownBy(() -> LottoValidator.validate(numbers))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining(DUPLICATE_ERROR_MESSAGE);
     }
@@ -49,7 +49,7 @@ class WinningNumbersValidatorTest {
     void 유효한_입력은_리스트를_반환한다() {
         List<Integer> numbers = List.of(1, 2, 3, 4, 5, 6);
 
-        List<Integer> result = WinningNumbersValidator.validate(numbers);
+        List<Integer> result = LottoValidator.validate(numbers);
 
         assertThat(result).containsExactly(1, 2, 3, 4, 5, 6);
     }

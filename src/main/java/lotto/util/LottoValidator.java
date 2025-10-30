@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public final class WinningNumbersValidator {
+public final class LottoValidator {
 
     private static final int REQUIRED_COUNT = 6;
     private static final int MIN_NUMBER = 1;
@@ -14,7 +14,7 @@ public final class WinningNumbersValidator {
     private static final String OUT_OF_RANGE_ERROR_MESSAGE = "[ERROR] 당첨 번호는 1부터 45 사이의 숫자여야 합니다.";
     private static final String DUPLICATE_ERROR_MESSAGE = "[ERROR] 당첨 번호는 중복된 숫자가 있을 수 없습니다.";
 
-    private WinningNumbersValidator() {
+    private LottoValidator() {
     }
 
     public static List<Integer> validate(List<Integer> numbers) {

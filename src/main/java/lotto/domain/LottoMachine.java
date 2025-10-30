@@ -4,8 +4,6 @@ import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import lotto.Lotto;
-
 public final class LottoMachine {
 
     private static final int MIN_NUMBER = 1;

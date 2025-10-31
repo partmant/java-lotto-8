@@ -15,7 +15,7 @@ public final class RankTest {
     @ParameterizedTest(name = "[{index}] 일치 개수: {0}, 보너스 여부: {1} → 예상 등수: {2}")
     @MethodSource("provideMatchCountAndBonusForRank")
     void 일치_개수와_보너스_여부에_따라_Rank를_반환한다(int matchCount, boolean hasBonus, Rank expectedRank) {
-        Rank result = Rank.valueOf(matchCount, hasBonus);
+        Rank result = Rank.from(matchCount, hasBonus);
 
         assertThat(result).isEqualTo(expectedRank);
     }

@@ -30,6 +30,6 @@ public final class WinningLotto {
     public Rank determineRankFor(Lotto lotto) {
         int matchCount = winningNumbers.matchCountWith(lotto);
         boolean hasBonus = lotto.hasBonus(bonusNumber);
-        return Rank.valueOf(matchCount, hasBonus);
+        return Rank.from(matchCount, hasBonus);
     }
 }

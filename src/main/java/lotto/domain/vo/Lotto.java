@@ -17,4 +17,9 @@ public class Lotto {
                 .filter(winningNumbers::contains)
                 .count();
     }
+
+    public boolean hasBonus(BonusNumber bonusNumber) {
+        return numbers.stream()
+                .anyMatch(bonusNumber::equalsTo);
+    }
 }

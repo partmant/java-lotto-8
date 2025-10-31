@@ -11,4 +11,10 @@ public class Lotto {
         LottoValidator.validate(numbers);
         this.numbers = numbers;
     }
+
+    public int countMatchingNumbers(List<Integer> winningNumbers) {
+        return (int) numbers.stream()
+                .filter(winningNumbers::contains)
+                .count();
+    }
 }

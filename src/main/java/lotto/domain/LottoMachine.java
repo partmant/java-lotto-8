@@ -1,8 +1,11 @@
 package lotto.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import camp.nextstep.edu.missionutils.Randoms;
+
+import lotto.domain.vo.Lotto;
 
 public final class LottoMachine {
 
@@ -17,5 +20,13 @@ public final class LottoMachine {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_SIZE);
         numbers.sort(Integer::compareTo);
         return new Lotto(numbers);
+    }
+
+    public static Lottos generateMultiple(int count) {
+        List<Lotto> lottoList = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            lottoList.add(generate());
+        }
+        return Lottos.from(lottoList);
     }
 }

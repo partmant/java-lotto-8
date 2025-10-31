@@ -1,19 +1,21 @@
 package lotto.domain;
 
 public enum Rank {
-    FIRST(6, false),
-    SECOND(5, true),
-    THIRD(5, false),
-    FOURTH(4, false),
-    FIFTH(3, false),
-    MISS(0, false);
+    FIRST(6, false, 2_000_000_000),
+    SECOND(5, true, 30_000_000),
+    THIRD(5, false, 1_500_000),
+    FOURTH(4, false, 50_000),
+    FIFTH(3, false, 5_000),
+    MISS(0, false, 0);
 
     private final int matchCount;
-    private final boolean requiresBonus;
+    private final boolean hasBonus;
+    private final int reward;
 
-    Rank(int matchCount, boolean requiresBonus) {
+    Rank(int matchCount, boolean hasBonus, int reward) {
         this.matchCount = matchCount;
-        this.requiresBonus = requiresBonus;
+        this.hasBonus = hasBonus;
+        this.reward = reward;
     }
 
     public static Rank from(int matchCount, boolean hasBonus) {
@@ -23,5 +25,9 @@ public enum Rank {
         if (matchCount == 4) return FOURTH;
         if (matchCount == 3) return FIFTH;
         return MISS;
+    }
+
+    public long calculateTotalReward(int count) {
+        return (long) reward * count;
     }
 }

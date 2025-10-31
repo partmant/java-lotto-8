@@ -1,9 +1,11 @@
 package lotto.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
 
 public class LottoMachineTest {
 
@@ -12,5 +14,15 @@ public class LottoMachineTest {
     void 로또_번호는_1부터_45_사이의_중복_없는_6개_숫자로_구성된다() {
         assertThatCode(LottoMachine::generate)
                 .doesNotThrowAnyException();
+    }
+
+    @DisplayName("구매 개수만큼 로또를 생성한다")
+    @Test
+    void 입력된_개수만큼_로또를_생성한다() {
+        int count = 5;
+
+        Lottos lottos = LottoMachine.generateMultiple(count);
+
+        assertThat(lottos.hasCountOf(count)).isTrue();
     }
 }

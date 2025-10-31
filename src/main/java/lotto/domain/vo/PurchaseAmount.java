@@ -20,4 +20,9 @@ public final class PurchaseAmount {
     public int calculateLottoCount() {
         return amount / LOTTO_PRICE;
     }
+
+    public double calculateProfitRate(long totalReward) {
+        double rawRate = ((double) totalReward / amount) * 100;
+        return Math.round(rawRate * 100.0) / 100.0;
+    }
 }

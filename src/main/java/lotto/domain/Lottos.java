@@ -22,7 +22,7 @@ public final class Lottos {
         return lottos.size() == expectedCount;
     }
 
-    public WinningResult calculateResult(WinningLotto winningLotto) {
+    public LottoResult calculateResult(WinningLotto winningLotto) {
         Map<Rank, Integer> resultMap = new EnumMap<>(Rank.class);
 
         for (Lotto lotto : lottos) {
@@ -30,6 +30,6 @@ public final class Lottos {
             resultMap.put(rank, resultMap.getOrDefault(rank, 0) + 1);
         }
 
-        return WinningResult.of(resultMap);
+        return LottoResult.of(resultMap);
     }
 }

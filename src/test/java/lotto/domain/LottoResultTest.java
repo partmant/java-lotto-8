@@ -13,7 +13,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.Map;
 import java.util.stream.Stream;
 
-public final class WinningResultTest {
+public final class LottoResultTest {
 
     @DisplayName("등수별 당첨 개수를 반환한다.")
     @Test
@@ -23,7 +23,7 @@ public final class WinningResultTest {
                 Rank.THIRD, 2,
                 Rank.MISS, 3
         );
-        WinningResult result = WinningResult.of(resultMap);
+        LottoResult result = LottoResult.of(resultMap);
 
         assertThat(result.countOf(Rank.FIRST)).isEqualTo(1);
         assertThat(result.countOf(Rank.THIRD)).isEqualTo(2);
@@ -38,7 +38,7 @@ public final class WinningResultTest {
                 Rank.THIRD, 1,
                 Rank.FIFTH, 1
         );
-        WinningResult result = WinningResult.of(resultMap);
+        LottoResult result = LottoResult.of(resultMap);
 
         long totalReward = result.totalReward();
 
@@ -53,7 +53,7 @@ public final class WinningResultTest {
     @MethodSource("provideProfitRateData")
     void 구입금액_대비_수익률을_계산한다(long totalReward, int purchaseAmountValue, double expectedRate) {
         Map<Rank, Integer> resultMap = Map.of(Rank.FIRST, 0);
-        WinningResult result = WinningResult.of(resultMap);
+        LottoResult result = LottoResult.of(resultMap);
         PurchaseAmount purchaseAmount = PurchaseAmount.from(String.valueOf(purchaseAmountValue));
 
         double rate = purchaseAmount.calculateProfitRate(totalReward);

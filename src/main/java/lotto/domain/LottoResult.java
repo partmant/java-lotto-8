@@ -5,16 +5,16 @@ import lotto.domain.vo.PurchaseAmount;
 import java.util.EnumMap;
 import java.util.Map;
 
-public final class WinningResult {
+public final class LottoResult {
 
     private final Map<Rank, Integer> results;
 
-    private WinningResult(Map<Rank, Integer> results) {
+    private LottoResult(Map<Rank, Integer> results) {
         this.results = new EnumMap<>(results);
     }
 
-    public static WinningResult of(Map<Rank, Integer> results) {
-        return new WinningResult(results);
+    public static LottoResult of(Map<Rank, Integer> results) {
+        return new LottoResult(results);
     }
 
     public int countOf(Rank rank) {

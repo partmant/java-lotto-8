@@ -29,7 +29,7 @@ public class LottosTest {
                 new Lotto(List.of(11, 12, 13, 14, 15, 16))
         ));
 
-        WinningResult result = lottos.calculateResult(winningLotto);
+        LottoResult result = lottos.calculateResult(winningLotto);
 
         Map<Rank, Integer> expected = Map.of(
                 Rank.FIRST, 1,

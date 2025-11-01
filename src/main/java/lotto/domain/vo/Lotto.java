@@ -7,9 +7,13 @@ import java.util.List;
 public class Lotto {
     private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
+    private Lotto(List<Integer> numbers) {
         LottoValidator.validate(numbers);
         this.numbers = numbers;
+    }
+
+    public static Lotto from(List<Integer> numbers) {
+        return new Lotto(numbers);
     }
 
     public int countMatchingNumbers(List<Integer> winningNumbers) {
@@ -21,5 +25,9 @@ public class Lotto {
     public boolean hasBonus(BonusNumber bonusNumber) {
         return numbers.stream()
                 .anyMatch(bonusNumber::equalsTo);
+    }
+
+    public List<Integer> numbers() {
+        return numbers;
     }
 }

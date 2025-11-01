@@ -19,7 +19,7 @@ public final class LottoMachine {
     public static Lotto generate() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_SIZE);
         numbers.sort(Integer::compareTo);
-        return new Lotto(numbers);
+        return Lotto.from(numbers);
     }
 
     public static Lottos generateMultiple(int count) {

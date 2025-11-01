@@ -12,23 +12,23 @@ public final class InputView {
     }
 
     public static String readPurchaseAmount() {
-        System.out.println(PURCHASE_AMOUNT_GUIDE_MESSAGE);
-        return Console.readLine();
+        return readLineWithGuide(PURCHASE_AMOUNT_GUIDE_MESSAGE);
     }
 
     public static String readWinningNumbers() {
-        System.out.println();
-        System.out.println(WINNING_NUMBERS_GUIDE_MESSAGE);
-        return Console.readLine();
+        return readLineWithGuide(WINNING_NUMBERS_GUIDE_MESSAGE);
     }
 
     public static String readBonusNumber() {
-        System.out.println();
-        System.out.println(BONUS_NUMBER_GUIDE_MESSAGE);
-        return Console.readLine();
+        return readLineWithGuide(BONUS_NUMBER_GUIDE_MESSAGE);
     }
 
     public static void close() {
         Console.close();
+    }
+
+    private static String readLineWithGuide(String guideMessage) {
+        System.out.println(guideMessage);
+        return Console.readLine();
     }
 }

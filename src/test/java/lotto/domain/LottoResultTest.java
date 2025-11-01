@@ -42,9 +42,9 @@ public final class LottoResultTest {
 
         long totalReward = result.totalReward();
 
-        long expected = Rank.FIRST.calculateTotalReward(1)
-                + Rank.THIRD.calculateTotalReward(1)
-                + Rank.FIFTH.calculateTotalReward(1);
+        long expected = Rank.FIRST.totalRewardFor(1)
+                + Rank.THIRD.totalRewardFor(1)
+                + Rank.FIFTH.totalRewardFor(1);
         assertThat(totalReward).isEqualTo(expected);
     }
 

@@ -27,7 +27,7 @@ public enum Rank {
         return MISS;
     }
 
-    public long calculateTotalReward(int count) {
+    public long totalRewardFor(int count) {
         return (long) reward * count;
     }
 }

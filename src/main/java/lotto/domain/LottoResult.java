@@ -23,7 +23,7 @@ public final class LottoResult {
 
     public long totalReward() {
         return results.entrySet().stream()
-                .mapToLong(entry -> entry.getKey().calculateTotalReward(entry.getValue()))
+                .mapToLong(entry -> entry.getKey().totalRewardFor(entry.getValue()))
                 .sum();
     }
 

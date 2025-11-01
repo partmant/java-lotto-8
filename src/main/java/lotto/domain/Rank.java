@@ -30,4 +30,16 @@ public enum Rank {
     public long totalRewardFor(int count) {
         return (long) reward * count;
     }
+
+    public int matchCount() {
+        return matchCount;
+    }
+
+    public boolean hasBonus() {
+        return hasBonus;
+    }
+
+    public int reward() {
+        return reward;
+    }
 }

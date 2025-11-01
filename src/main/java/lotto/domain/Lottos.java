@@ -32,4 +32,8 @@ public final class Lottos {
 
         return LottoResult.of(resultMap);
     }
+
+    public List<Lotto> values() {
+        return List.copyOf(lottos);
+    }
 }

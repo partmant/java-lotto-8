@@ -6,9 +6,9 @@ import java.util.stream.Stream;
 
 public final class WinningNumbersParser {
 
-    private static final String NULL_OR_EMPTY_ERROR_MESSAGE = "[ERROR] 입력은 비어 있을 수 없습니다.";
-    private static final String NON_NUMERIC_ERROR_MESSAGE = "[ERROR] 당첨 번호는 숫자여야 합니다.";
-    private static final String OUT_OF_INTEGER_RANGE_ERROR_MESSAGE = "[ERROR] 입력값이 처리 가능한 정수 범위를 초과했습니다.";
+    private static final String NULL_OR_EMPTY_ERROR_MESSAGE = "입력은 비어 있을 수 없습니다.";
+    private static final String NON_NUMERIC_ERROR_MESSAGE = "당첨 번호는 숫자여야 합니다.";
+    private static final String OUT_OF_INTEGER_RANGE_ERROR_MESSAGE = "입력값이 처리 가능한 정수 범위를 초과했습니다.";
 
     private WinningNumbersParser() {
     }

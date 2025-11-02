@@ -15,10 +15,10 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 public final class BonusNumberValidatorTest {
 
-    private static final String NULL_OR_EMPTY_ERROR_MESSAGE = "[ERROR] 입력은 비어 있을 수 없습니다.";
-    private static final String NON_NUMERIC_ERROR_MESSAGE = "[ERROR] 보너스 번호는 숫자여야 합니다.";
-    private static final String OUT_OF_RANGE_ERROR_MESSAGE = "[ERROR] 보너스 번호는 1부터 45 사이여야 합니다.";
-    private static final String OUT_OF_INTEGER_RANGE_ERROR_MESSAGE = "[ERROR] 입력값이 정수 범위를 초과했습니다.";
+    private static final String NULL_OR_EMPTY_ERROR_MESSAGE = "입력은 비어 있을 수 없습니다.";
+    private static final String NON_NUMERIC_ERROR_MESSAGE = "보너스 번호는 숫자여야 합니다.";
+    private static final String OUT_OF_RANGE_ERROR_MESSAGE = "보너스 번호는 1부터 45 사이여야 합니다.";
+    private static final String OUT_OF_INTEGER_RANGE_ERROR_MESSAGE = "입력값이 정수 범위를 초과했습니다.";
 
     @DisplayName("입력이 null이거나 공백이면 예외를 발생시킨다.")
     @ParameterizedTest(name = "[{index}] 입력값: \"{0}\"")

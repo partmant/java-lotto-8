@@ -17,7 +17,9 @@ public final class LottoMachine {
     }
 
     public static Lotto generate() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_SIZE);
+        List<Integer> numbers = new ArrayList<>(
+                Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_SIZE)
+        );
         numbers.sort(Integer::compareTo);
         return Lotto.from(numbers);
     }

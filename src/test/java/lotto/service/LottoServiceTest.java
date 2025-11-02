@@ -3,6 +3,7 @@ package lotto.service;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
+import java.util.Map;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -48,13 +49,22 @@ public class LottoServiceTest {
         LottoResult result = LottoService.calculateResult(lottos, winningLotto);
 
         // then
-        assertThat(result.countOf(Rank.FIRST)).isEqualTo(1);
-        assertThat(result.countOf(Rank.SECOND)).isEqualTo(1);
-        assertThat(result.countOf(Rank.THIRD)).isEqualTo(1);
-        assertThat(result.countOf(Rank.FOURTH)).isEqualTo(0);
-        assertThat(result.countOf(Rank.FIFTH)).isEqualTo(0);
-        assertThat(result.countOf(Rank.MISS)).isEqualTo(1);
+        var expectedCounts = Map.of(
+                Rank.FIRST, 1,
+                Rank.SECOND, 1,
+                Rank.THIRD, 1,
+                Rank.FOURTH, 0,
+                Rank.FIFTH, 0,
+                Rank.MISS, 1
+        );
+
+        expectedCounts.forEach((rank, expectedCount) ->
+                assertThat(result.countOf(rank))
+                        .as("%s 등수의 개수 검증", rank)
+                        .isEqualTo(expectedCount)
+        );
     }
+
 
     @DisplayName("발행된 로또의 총 수익률을 계산한다.")
     @Test

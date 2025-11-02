@@ -53,9 +53,9 @@ public class LottoServiceTest {
                 Rank.FIRST, 1,
                 Rank.SECOND, 1,
                 Rank.THIRD, 1,
-                Rank.FOURTH, 0,
+                Rank.FOURTH, 1,
                 Rank.FIFTH, 0,
-                Rank.MISS, 1
+                Rank.MISS, 0
         );
 
         expectedCounts.forEach((rank, expectedCount) ->

@@ -21,12 +21,12 @@ public class LottosTest {
         WinningLotto winningLotto = WinningLotto.of(winningNumbers, bonusNumber);
 
         Lottos lottos = Lottos.from(List.of(
-                new Lotto(List.of(1, 2, 3, 4, 5, 6)),
-                new Lotto(List.of(1, 2, 3, 4, 5, 7)),
-                new Lotto(List.of(1, 2, 3, 4, 5, 8)),
-                new Lotto(List.of(1, 2, 3, 4, 8, 9)),
-                new Lotto(List.of(1, 2, 3, 8, 9, 10)),
-                new Lotto(List.of(11, 12, 13, 14, 15, 16))
+                Lotto.from(List.of(1, 2, 3, 4, 5, 6)),
+                Lotto.from(List.of(1, 2, 3, 4, 5, 7)),
+                Lotto.from(List.of(1, 2, 3, 4, 5, 8)),
+                Lotto.from(List.of(1, 2, 3, 4, 8, 9)),
+                Lotto.from(List.of(1, 2, 3, 8, 9, 10)),
+                Lotto.from(List.of(11, 12, 13, 14, 15, 16))
         ));
 
         LottoResult result = lottos.calculateResult(winningLotto);

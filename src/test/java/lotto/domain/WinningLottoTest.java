@@ -25,7 +25,7 @@ public final class WinningLottoTest {
     @ParameterizedTest(name = "[{index}] 로또 번호: {0} → 예상 등수: {1}")
     @MethodSource("provideLottoAndExpectedRank")
     void 로또와_당첨번호를_비교하여_등수를_판별한다(List<Integer> lottoNumbers, Rank expectedRank) {
-        Lotto lotto = new Lotto(lottoNumbers);
+        Lotto lotto = Lotto.from(lottoNumbers);
 
         Rank result = WINNING_LOTTO.determineRankFor(lotto);
 

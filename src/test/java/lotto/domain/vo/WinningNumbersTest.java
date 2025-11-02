@@ -31,7 +31,7 @@ public final class WinningNumbersTest {
     @Test
     void 로또와_일치하는_번호_개수를_계산한다() {
         WinningNumbers winningNumbers = WinningNumbers.from("1, 2, 3, 4, 5, 6");
-        Lotto lotto = new Lotto(List.of(1, 2, 3, 10, 11, 12));
+        Lotto lotto = Lotto.from(List.of(1, 2, 3, 10, 11, 12));
 
         int matchCount = winningNumbers.matchCountWith(lotto);
 

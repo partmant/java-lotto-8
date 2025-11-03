@@ -23,18 +23,6 @@ public final class WinningResultDto {
         return new WinningResultDto(rankDtos, profitRate);
     }
 
-    public String formatted() {
-        String rankLines = rankResults.stream()
-                .map(RankResultDto::formattedLine)
-                .collect(Collectors.joining(System.lineSeparator()));
-
-        return String.format(
-                "당첨 통계%n---%n%s%n총 수익률은 %,.1f%%입니다.",
-                rankLines,
-                profitRate
-        );
-    }
-
     private static List<RankResultDto> createRankResultDtos(LottoResult lottoResult) {
         return Arrays.stream(Rank.values())
                 .filter(rank -> rank != Rank.MISS)
@@ -42,5 +30,13 @@ public final class WinningResultDto {
                         .thenComparing(Rank::hasBonus))
                 .map(rank -> RankResultDto.from(rank, lottoResult.countOf(rank)))
                 .collect(Collectors.toList());
+    }
+
+    public List<RankResultDto> rankResults() {
+        return List.copyOf(rankResults);
+    }
+
+    public double profitRate() {
+        return profitRate;
     }
 }

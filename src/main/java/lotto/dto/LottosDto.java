@@ -19,12 +19,6 @@ public final class LottosDto {
         return new LottosDto(list);
     }
 
-    public String formatted() {
-        return lottos.stream()
-                .map(LottoDto::formatted)
-                .collect(Collectors.joining(System.lineSeparator()));
-    }
-
     public List<LottoDto> lottos() {
         return List.copyOf(lottos);
     }

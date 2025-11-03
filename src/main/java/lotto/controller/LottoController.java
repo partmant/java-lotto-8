@@ -21,8 +21,10 @@ public final class LottoController {
 
         // 2. 로또 발행 및 구매 내역 출력
         Lottos lottos = LottoService.issueLottos(purchaseAmount);
+        LottosDto lottosDto = LottosDto.from(lottos);
+
         OutputView.printPurchasedCount(purchaseAmount.calculateLottoCount());
-        OutputView.printPurchasedLottos(LottosDto.from(lottos));
+        OutputView.printPurchasedLottos(lottosDto);
         OutputView.printNewLine();
 
         // 3. 당첨 번호 입력
@@ -36,9 +38,10 @@ public final class LottoController {
         // 5. 결과 계산
         LottoResult result = LottoService.calculateResult(lottos, winningLotto);
         double profitRate = result.profitRate(purchaseAmount);
+        WinningResultDto winningResultDto = WinningResultDto.from(result, profitRate);
 
         // 6. 결과 출력
-        OutputView.printWinningResult(WinningResultDto.from(result, profitRate));
+        OutputView.printLottoResult(winningResultDto);
 
         // 7. 자원 해제
         InputView.close();

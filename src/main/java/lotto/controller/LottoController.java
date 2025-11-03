@@ -30,8 +30,7 @@ public final class LottoController {
         OutputView.printNewLine();
 
         // 4. 보너스 번호 입력
-        BonusNumber bonusNumber = readBonusNumber(winningNumbers);
-        WinningLotto winningLotto = WinningLotto.of(winningNumbers, bonusNumber);
+        WinningLotto winningLotto = createWinningLotto(winningNumbers);
         OutputView.printNewLine();
 
         // 5. 결과 계산
@@ -50,8 +49,8 @@ public final class LottoController {
             try {
                 return PurchaseAmount.from(InputView.readPurchaseAmount());
             } catch (IllegalArgumentException e) {
-                OutputView.printError(e.getMessage());
                 OutputView.printNewLine();
+                OutputView.printError(e.getMessage());
             }
         }
     }
@@ -61,19 +60,20 @@ public final class LottoController {
             try {
                 return WinningNumbers.from(InputView.readWinningNumbers());
             } catch (IllegalArgumentException e) {
-                OutputView.printError(e.getMessage());
                 OutputView.printNewLine();
+                OutputView.printError(e.getMessage());
             }
         }
     }
 
-    private BonusNumber readBonusNumber(WinningNumbers winningNumbers) {
+    private WinningLotto createWinningLotto(WinningNumbers winningNumbers) {
         while (true) {
             try {
-                return BonusNumber.from(InputView.readBonusNumber());
+                BonusNumber bonusNumber = BonusNumber.from(InputView.readBonusNumber());
+                return WinningLotto.of(winningNumbers, bonusNumber);
             } catch (IllegalArgumentException e) {
-                OutputView.printError(e.getMessage());
                 OutputView.printNewLine();
+                OutputView.printError(e.getMessage());
             }
         }
     }

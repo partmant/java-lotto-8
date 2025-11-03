@@ -20,7 +20,6 @@ public final class LottoMachine {
         List<Integer> numbers = new ArrayList<>(
                 Randoms.pickUniqueNumbersInRange(MIN_NUMBER, MAX_NUMBER, LOTTO_SIZE)
         );
-        numbers.sort(Integer::compareTo);
         return Lotto.from(numbers);
     }
 

@@ -1,5 +1,6 @@
 package lotto.util;
 
+import static lotto.exception.ErrorMessage.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -10,10 +11,6 @@ import org.junit.jupiter.api.Test;
 
 class LottoValidatorTest {
 
-    private static final String INVALID_COUNT_ERROR_MESSAGE = "당첨 번호는 6개의 숫자여야 합니다.";
-    private static final String OUT_OF_RANGE_ERROR_MESSAGE = "당첨 번호는 1부터 45 사이의 숫자여야 합니다.";
-    private static final String DUPLICATE_ERROR_MESSAGE = "당첨 번호는 중복된 숫자가 있을 수 없습니다.";
-
     @DisplayName("숫자가 6개가 아니면 예외를 발생시킨다.")
     @Test
     void 숫자가_6개가_아니면_예외를_발생시킨다() {
@@ -21,7 +18,7 @@ class LottoValidatorTest {
 
         assertThatThrownBy(() -> LottoValidator.validate(numbers))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(INVALID_COUNT_ERROR_MESSAGE);
+                .hasMessageContaining(INVALID_WINNING_NUMBER_COUNT.getMessage());
     }
 
     @DisplayName("1부터 45 범위를 벗어나는 숫자가 포함되어 있으면 예외를 발생시킨다.")
@@ -31,7 +28,7 @@ class LottoValidatorTest {
 
         assertThatThrownBy(() -> LottoValidator.validate(numbers))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(OUT_OF_RANGE_ERROR_MESSAGE);
+                .hasMessageContaining(INVALID_WINNING_NUMBER_RANGE.getMessage());
     }
 
     @DisplayName("중복된 숫자가 있으면 예외를 발생시킨다.")
@@ -41,7 +38,7 @@ class LottoValidatorTest {
 
         assertThatThrownBy(() -> LottoValidator.validate(numbers))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(DUPLICATE_ERROR_MESSAGE);
+                .hasMessageContaining(WINNING_NUMBER_DUPLICATE.getMessage());
     }
 
     @DisplayName("유효한 입력은 검증을 성공한다.")

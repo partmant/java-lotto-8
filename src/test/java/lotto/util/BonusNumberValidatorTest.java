@@ -1,5 +1,6 @@
 package lotto.util;
 
+import static lotto.exception.ErrorMessage.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -15,11 +16,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 public final class BonusNumberValidatorTest {
 
-    private static final String NULL_OR_EMPTY_ERROR_MESSAGE = "입력은 비어 있을 수 없습니다.";
-    private static final String NON_NUMERIC_ERROR_MESSAGE = "보너스 번호는 숫자여야 합니다.";
-    private static final String OUT_OF_RANGE_ERROR_MESSAGE = "보너스 번호는 1부터 45 사이여야 합니다.";
-    private static final String OUT_OF_INTEGER_RANGE_ERROR_MESSAGE = "입력값이 정수 범위를 초과했습니다.";
-
     @DisplayName("입력이 null이거나 공백이면 예외를 발생시킨다.")
     @ParameterizedTest(name = "[{index}] 입력값: \"{0}\"")
     @NullSource
@@ -27,7 +23,7 @@ public final class BonusNumberValidatorTest {
     void 입력이_null_또는_공백이면_예외를_발생시킨다(String input) {
         assertThatThrownBy(() -> BonusNumberValidator.validate(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(NULL_OR_EMPTY_ERROR_MESSAGE);
+                .hasMessageContaining(NULL_OR_EMPTY.getMessage());
     }
 
     @DisplayName("입력 값이 숫자가 아니면 예외를 발생시킨다.")
@@ -36,7 +32,7 @@ public final class BonusNumberValidatorTest {
     void 입력_값이_숫자가_아니면_예외를_발생시킨다(String input) {
         assertThatThrownBy(() -> BonusNumberValidator.validate(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(NON_NUMERIC_ERROR_MESSAGE);
+                .hasMessageContaining(NON_NUMERIC.getMessage());
     }
 
     @DisplayName("1보다 작거나 45보다 큰 숫자를 입력하면 예외를 발생시킨다.")
@@ -45,7 +41,7 @@ public final class BonusNumberValidatorTest {
     void 숫자_범위를_벗어나면_예외를_발생시킨다(String input) {
         assertThatThrownBy(() -> BonusNumberValidator.validate(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(OUT_OF_RANGE_ERROR_MESSAGE);
+                .hasMessageContaining(INVALID_WINNING_NUMBER_RANGE.getMessage());
     }
 
     @DisplayName("입력 값이 int의 범위를 초과하면 예외를 발생시킨다.")
@@ -54,7 +50,7 @@ public final class BonusNumberValidatorTest {
     void 입력_값이_int_범위를_초과하면_예외를_발생시킨다(String input) {
         assertThatThrownBy(() -> BonusNumberValidator.validate(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(OUT_OF_INTEGER_RANGE_ERROR_MESSAGE);
+                .hasMessageContaining(OUT_OF_INTEGER_RANGE.getMessage());
     }
 
     @DisplayName("입력 값이 유효하면 예외가 발생하지 않는다.")

@@ -1,5 +1,6 @@
 package lotto.util;
 
+import static lotto.exception.ErrorMessage.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -13,10 +14,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 public class WinningNumbersParserTest {
 
-    private static final String NULL_OR_EMPTY_ERROR_MESSAGE = "입력은 비어 있을 수 없습니다.";
-    private static final String NON_NUMERIC_ERROR_MESSAGE = "당첨 번호는 숫자여야 합니다.";
-    private static final String OUT_OF_INTEGER_RANGE_ERROR_MESSAGE = "입력값이 처리 가능한 정수 범위를 초과했습니다.";
-
     @DisplayName("입력이 null이거나 공백이면 예외를 발생시킨다.")
     @ParameterizedTest(name = "[{index}] 입력값: \"{0}\"")
     @NullSource
@@ -24,7 +21,7 @@ public class WinningNumbersParserTest {
     void 입력이_null_또는_공백이면_예외를_발생시킨다(String input) {
         assertThatThrownBy(() -> WinningNumbersParser.parse(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(NULL_OR_EMPTY_ERROR_MESSAGE);
+                .hasMessageContaining(NULL_OR_EMPTY.getMessage());
     }
 
     @DisplayName("숫자가 아닌 값이 포함되어 있으면 예외를 발생시킨다.")
@@ -32,7 +29,7 @@ public class WinningNumbersParserTest {
     void 입력_값이_숫자가_아니면_예외를_발생시킨다() {
         assertThatThrownBy(() -> WinningNumbersParser.parse("1,2,3,4,a,6"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(NON_NUMERIC_ERROR_MESSAGE);
+                .hasMessageContaining(NON_NUMERIC.getMessage());
     }
 
     @DisplayName("입력 값이 int 범위를 초과하면 예외를 발생시킨다.")
@@ -40,7 +37,7 @@ public class WinningNumbersParserTest {
     void 입력_값이_int_범위를_초과하면_예외를_발생시킨다() {
         assertThatThrownBy(() -> WinningNumbersParser.parse("1,2,3,4,5,2200000000"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining(OUT_OF_INTEGER_RANGE_ERROR_MESSAGE);
+                .hasMessageContaining(OUT_OF_INTEGER_RANGE.getMessage());
     }
 
     @DisplayName("유효한 입력은 쉼표 기준으로 분리되어 정수 리스트로 반환한다.")

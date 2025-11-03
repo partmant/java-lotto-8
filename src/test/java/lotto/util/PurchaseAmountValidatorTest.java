@@ -1,5 +1,6 @@
 package lotto.util;
 
+import static lotto.exception.ErrorMessage.*;
 import static org.assertj.core.api.Assertions.*;
 
 import java.util.stream.Stream;
@@ -15,12 +16,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 @DisplayName("PurchaseAmountValidator 테스트")
 class PurchaseAmountValidatorTest {
 
-    private static final String NULL_OR_EMPTY_ERROR_MESSAGE = "입력은 비어있을 수 없습니다.";
-    private static final String NON_NUMERIC_ERROR_MESSAGE = "입력 값은 숫자여야 합니다.";
-    private static final String OUT_OF_RANGE_ERROR_MESSAGE = "입력값이 처리 가능한 정수 범위를 초과했습니다.";
-    private static final String NEGATIVE_OR_ZERO_ERROR_MESSAGE = "구입 금액은 0보다 커야 합니다.";
-    private static final String INVALID_UNIT_ERROR_MESSAGE = "구입 금액은 1000원 단위여야 합니다.";
-
     @Nested
     @DisplayName("입력값 유효성 검증")
     class InputValidationTest {
@@ -32,7 +27,7 @@ class PurchaseAmountValidatorTest {
         void 입력이_null_또는_공백이면_예외를_발생시킨다(String input) {
             assertThatThrownBy(() -> PurchaseAmountValidator.validate(input))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(NULL_OR_EMPTY_ERROR_MESSAGE);
+                    .hasMessageContaining(NULL_OR_EMPTY.getMessage());
         }
 
         @ParameterizedTest(name = "[{index}] 입력값: \"{0}\"")
@@ -41,7 +36,7 @@ class PurchaseAmountValidatorTest {
         void 입력_값이_숫자가_아니면_예외를_발생시킨다(String input) {
             assertThatThrownBy(() -> PurchaseAmountValidator.validate(input))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(NON_NUMERIC_ERROR_MESSAGE);
+                    .hasMessageContaining(NON_NUMERIC.getMessage());
         }
 
         @ParameterizedTest(name = "[{index}] 입력값: \"{0}\"")
@@ -50,7 +45,7 @@ class PurchaseAmountValidatorTest {
         void 입력_값이_int_범위를_초과하면_예외를_발생시킨다(String input) {
             assertThatThrownBy(() -> PurchaseAmountValidator.validate(input))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(OUT_OF_RANGE_ERROR_MESSAGE);
+                    .hasMessageContaining(OUT_OF_INTEGER_RANGE.getMessage());
         }
     }
 
@@ -63,7 +58,7 @@ class PurchaseAmountValidatorTest {
         void 입력_값이_양의_정수가_아니면_예외를_발생시킨다() {
             assertThatThrownBy(() -> PurchaseAmountValidator.validate("-3000"))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(NEGATIVE_OR_ZERO_ERROR_MESSAGE);
+                    .hasMessageContaining(NEGATIVE_OR_ZERO.getMessage());
         }
 
         @Test
@@ -71,7 +66,7 @@ class PurchaseAmountValidatorTest {
         void 구입_금액이_1000원_단위가_아니면_예외를_발생시킨다() {
             assertThatThrownBy(() -> PurchaseAmountValidator.validate("2100"))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining(INVALID_UNIT_ERROR_MESSAGE);
+                    .hasMessageContaining(INVALID_PURCHASE_AMOUNT_UNIT.getMessage());
         }
     }
 
